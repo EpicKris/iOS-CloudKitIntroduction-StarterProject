@@ -14,6 +14,7 @@
 		608231971ACE5BD2004D321F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 608231961ACE5BD2004D321F /* Images.xcassets */; };
 		6082319A1ACE5BD2004D321F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 608231981ACE5BD2004D321F /* LaunchScreen.xib */; };
 		608231A61ACE5BD2004D321F /* CloudBugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608231A51ACE5BD2004D321F /* CloudBugTests.swift */; };
+		608231B01ACE5D63004D321F /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608231AF1ACE5D63004D321F /* PostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		6082319F1ACE5BD2004D321F /* CloudBugTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudBugTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		608231A41ACE5BD2004D321F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		608231A51ACE5BD2004D321F /* CloudBugTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudBugTests.swift; sourceTree = "<group>"; };
+		608231AF1ACE5D63004D321F /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				6082318D1ACE5BD1004D321F /* AppDelegate.swift */,
 				6082318F1ACE5BD2004D321F /* MasterViewController.swift */,
 				608231911ACE5BD2004D321F /* DetailViewController.swift */,
+				608231AF1ACE5D63004D321F /* PostViewController.swift */,
 				608231931ACE5BD2004D321F /* Main.storyboard */,
 				608231961ACE5BD2004D321F /* Images.xcassets */,
 				608231981ACE5BD2004D321F /* LaunchScreen.xib */,
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				608231B01ACE5D63004D321F /* PostViewController.swift in Sources */,
 				608231921ACE5BD2004D321F /* DetailViewController.swift in Sources */,
 				608231901ACE5BD2004D321F /* MasterViewController.swift in Sources */,
 				6082318E1ACE5BD1004D321F /* AppDelegate.swift in Sources */,
