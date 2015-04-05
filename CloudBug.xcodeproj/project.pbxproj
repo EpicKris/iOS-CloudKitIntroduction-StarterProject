@@ -15,6 +15,7 @@
 		6082319A1ACE5BD2004D321F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 608231981ACE5BD2004D321F /* LaunchScreen.xib */; };
 		608231A61ACE5BD2004D321F /* CloudBugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608231A51ACE5BD2004D321F /* CloudBugTests.swift */; };
 		608231B01ACE5D63004D321F /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608231AF1ACE5D63004D321F /* PostViewController.swift */; };
+		60F6DB771ACFEE20003BA996 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F6DB761ACFEE20003BA996 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		608231A41ACE5BD2004D321F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		608231A51ACE5BD2004D321F /* CloudBugTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudBugTests.swift; sourceTree = "<group>"; };
 		608231AF1ACE5D63004D321F /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		60F6DB731ACFED5C003BA996 /* CloudBug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CloudBug.entitlements; sourceTree = "<group>"; };
+		60F6DB761ACFEE20003BA996 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60F6DB771ACFEE20003BA996 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +67,7 @@
 		6082317F1ACE5BD1004D321F = {
 			isa = PBXGroup;
 			children = (
+				60F6DB761ACFEE20003BA996 /* CloudKit.framework */,
 				6082318A1ACE5BD1004D321F /* CloudBug */,
 				608231A21ACE5BD2004D321F /* CloudBugTests */,
 				608231891ACE5BD1004D321F /* Products */,
@@ -81,6 +86,7 @@
 		6082318A1ACE5BD1004D321F /* CloudBug */ = {
 			isa = PBXGroup;
 			children = (
+				60F6DB731ACFED5C003BA996 /* CloudBug.entitlements */,
 				6082318D1ACE5BD1004D321F /* AppDelegate.swift */,
 				6082318F1ACE5BD2004D321F /* MasterViewController.swift */,
 				608231911ACE5BD2004D321F /* DetailViewController.swift */,
@@ -167,6 +173,12 @@
 				TargetAttributes = {
 					608231871ACE5BD1004D321F = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = NN8JSG957J;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					6082319E1ACE5BD2004D321F = {
 						CreatedOnToolsVersion = 6.3;
@@ -348,9 +360,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CloudBug/CloudBug.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CloudBug/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -358,9 +374,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CloudBug/CloudBug.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CloudBug/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -417,6 +437,7 @@
 				608231AB1ACE5BD2004D321F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		608231AC1ACE5BD2004D321F /* Build configuration list for PBXNativeTarget "CloudBugTests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +446,7 @@
 				608231AE1ACE5BD2004D321F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

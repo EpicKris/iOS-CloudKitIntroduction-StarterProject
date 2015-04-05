@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class MasterViewController: UITableViewController {
 
@@ -23,6 +24,29 @@ class MasterViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "receiveBug:", name: "bugPosted", object: nil)
+        
+        let container = CKContainer.defaultContainer()
+        let publicData = container.publicCloudDatabase
+        
+        let query = CKQuery(recordType: "Bug", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
+        publicData.performQuery(query, inZoneWithID: nil) { results, error in
+            if error == nil { // There is no error
+                for bug in results {
+                    let newBug = Bug()
+                    newBug.title = bug["Title"] as! String
+                    newBug.description = bug["Description"] as! String
+                    
+                    self.objects.append(newBug)
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.tableView.reloadData()
+                    })
+                }
+            }
+            else {
+                println(error)
+            }
+        }
     }
     
     func receiveBug(sender: NSNotification) {
@@ -31,6 +55,18 @@ class MasterViewController: UITableViewController {
         objects.append(bug)
         
         tableView.reloadData()
+        
+        let container = CKContainer.defaultContainer()
+        let publicData = container.publicCloudDatabase
+        
+        let record = CKRecord(recordType: "Bug")
+        record.setValue(bug.title, forKey: "Title")
+        record.setValue(bug.description, forKey: "Description")
+        publicData.saveRecord(record, completionHandler: { record, error in
+            if error != nil {
+                println(error)
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,13 +115,36 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            
+            let container = CKContainer.defaultContainer()
+            let publicData = container.publicCloudDatabase
+            
+            let bug = self.objects[indexPath.row]
+            let query = CKQuery(recordType: "Bug", predicate: NSPredicate(format: "(Title == %@) AND (Description == %@)", argumentArray: [bug.title, bug.description]))
+            publicData.performQuery(query, inZoneWithID: nil, completionHandler: { results, error in
+                if error == nil {
+                    if results.count > 0 {
+                        let record: CKRecord! = results[0] as! CKRecord
+                        println(record)
+
+                        publicData.deleteRecordWithID(record.recordID, completionHandler: { recordID, error in
+                            if error != nil {
+                                println(error)
+                            }
+                        })
+                    }
+                }
+                else {
+                    println(error)
+                }
+            })
+            
             objects.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
-
 
 }
 
