@@ -1,7 +1,9 @@
-### Tuts+ Tutorial: iOS 8 - Introduction to CloudKit
+### Tuts+ Tutorial: An Introduction to CloudKit
 
 #### Instructor: Davis Allie
 
-CloudKit is an Apple framework designed to offer an easy-to-use and free solution for developers to store information in database format on iCloud. In this tutorial you will learn how to create, manipulate and delete record types and records both on the web and in an iOS app.
+In this tutorial, you will learn how to set up CloudKit for an iOS application. Along the way, you will become familiar with the CloudKit dashboard, the framework's APIs, and database storage.
 
-Starter project for the Tuts+ tutorial: [iOS 8: Introduction to CloudKit](http://code.tutsplus.com/tutorials/ios-8-introduction-to-cloudkit--cms-23775)
+Starter project for the Tuts+ tutorial: [An Introduction to CloudKit](http://code.tutsplus.com/tutorials/an-introduction-to-cloudkit--cms-23775)
+
+**Read this tutorial on [Tuts+](https://code.tutsplus.com)**
